@@ -5,36 +5,34 @@
 
 using namespace std;
 
+vector<string> symbols;
+vector<string> vars;
 
 // function designed to return a vector, contains each piece of the function 
 vector<string> inputToVars(string input) {
 
-    vector<string> vars;
-    vector<string> type;
-
     string var = "";
 
-    for(int i = 0; i < input.size(); i++) {
-        char c = input[i];
-        if(c != '+' && c != '-') {
-            var += c; 
-        }
-        else if(c == '+' || c == '-') {
-            vars.push_back(var);
-            var = "";
+    for(int i=0; i < input.size(); i++) {
+        var=input[i];
+        vars.push_back(var);
+        var="";
+    }
+    
+    for(int q=0; q < vars.size(); q++) {
+        if(vars[q]== "-" || vars[q] == "+" || vars[q] == "*" || vars[q] == "/") {
+            symbols.push_back(vars[q]);
+            vars[q] = " ";
         }
     }
 
-    for(int q = 0;  q < vars.size(); q++) {
-        cout << vars[q] << " ";
-    }
     return vars;
 }
 
 string deriv(string input) {
-    cout << input;
 
     inputToVars(input);
+    
     return "hi";
 }
 
